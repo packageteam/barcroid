@@ -1,0 +1,48 @@
+<ion-view view-title="Sign Up">
+  	<ion-header-bar>
+		<h1 class="title">Sign Up</h1>
+		<div class="buttons">
+		  <button class="button button-clear" ng-click="closeLogin()">Close</button>
+		</div>
+	</ion-header-bar>
+	<ion-content>
+		<form ng-submit="doLogin()">
+		  	<div class="list">
+				<label class="item item-input">
+				  	<span class="input-label">First Name</span>
+				  	<input type="text" ng-model="loginData.fname">
+				</label>
+				<label class="item item-input">
+				  	<span class="input-label">Last Name</span>
+				  	<input type="text" ng-model="loginData.lname">
+				</label>
+				<label class="item item-input">
+				  	<span class="input-label">Username</span>
+				  	<input type="text" ng-model="loginData.username">
+				</label>
+				<label class="item item-input">
+				  	<span class="input-label">Email</span>
+				  	<input type="email" ng-model="loginData.email">
+				</label>
+				<label class="item item-input">
+				  	<span class="input-label">Password</span>
+				  	<input type="password" ng-model="loginData.password">
+				</label>
+				<label class="item item-input">
+				  	<span class="input-label">Contact</span>
+				  	<input type="number" ng-model="loginData.contact">
+				</label>
+				<label class="item item-input">
+				  	<span class="input-label">Address</span>
+				  	<input type="text" ng-model="loginData.address">
+				</label>
+
+
+				<!-- <button> <a class="btn btn-primary" href="#/app/playlists">Log in</a></button>	 -->
+
+				<center><ion-item href="#/app/login" class="btn button">Sign Up</ion-item></center>
+				<!-- <ion-item href="#/app/playlists" class="btn btn-sm btn-primary">Playlists</ion-item> -->
+		  	</div>
+		</form>
+	</ion-content>
+</ion-view>
