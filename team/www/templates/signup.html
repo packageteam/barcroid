@@ -1,9 +1,9 @@
 <ion-view view-title="Sign Up">
   	<ion-header-bar>
 		<h1 class="title">Sign Up</h1>
-		<div class="buttons">
+		<!-- <div class="buttons">
 		  <button class="button button-clear" ng-click="closeLogin()">Close</button>
-		</div>
+		</div> -->
 	</ion-header-bar>
 	<ion-content>
 		<form ng-submit="doLogin()">
@@ -40,8 +40,12 @@
 
 				<!-- <button> <a class="btn btn-primary" href="#/app/playlists">Log in</a></button>	 -->
 
-				<center><ion-item href="#/app/login" class="btn button">Sign Up</ion-item></center>
+				<!-- <center><ion-item href="#/app/login" class="btn button">Sign Up</ion-item></center> -->
 				<!-- <ion-item href="#/app/playlists" class="btn btn-sm btn-primary">Playlists</ion-item> -->
+
+				<center>
+					<a href="#/login" class="signup_button bar bar-header bar-positive"><b>Sign up</b></a>
+				</center>
 		  	</div>
 		</form>
 	</ion-content>

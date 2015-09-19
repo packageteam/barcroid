@@ -1,23 +1,11 @@
-<ion-view view-title="Profile">
+<ion-view view-title="Admin Profile">
   <ion-content>
     <ion-list>
-      <!-- <ion-item ng-repeat="profile in profiles" href="#/app/profile/{{profiles.id}}"> -->
-      <!-- <ion-item ng-repeat="profile in profiles" >
-        Name:&nbsp{{profile.name}}
-        {{profile.username}}
-        {{profile.email}}
-        {{profile.contact}}
-        {{profile.address}}
-      </ion-item> -->
       <div class="list list-inset" ng-repeat="profile in profiles">
 
     <div class="item">
       <span class="ion-person"></span>&nbsp&nbsp{{profile.name}}
     </div>
-
-    <!-- <div class="item">
-      Username: {{profile.username}}
-    </div> -->
 
     <div class="item">
       <span class="ion-email"></span>&nbsp&nbsp{{profile.email}}

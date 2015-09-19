@@ -13,7 +13,7 @@ angular.module('starter.controllers', [])
   $scope.loginData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('my-modal.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
@@ -52,17 +52,42 @@ angular.module('starter.controllers', [])
 
 .controller('ProfileCtrl', function($scope) {
   $scope.profiles = [
-    { title: 'Firstname:    Danica', id: 1 },
-    { title: 'Lastname:     Pacana', id: 2 },
-    { title: 'Username:     danicapacana', id: 3 },
-    { title: 'Email:        danica.pacana1195@gmail.com', id: 4 },
-    { title: 'Password:     ******', id: 5 },
-    { title: 'Contact:      09351370463', id: 6 },
-    { title: 'Address:      Balulang', id: 7 }
+    { name: 'Pacana, Danica', username: 'danicapacana', email: 'danica.pacana1195@gmail.com', contact: '09351370463', address: 'Balulang', id: 1 },
   ];
 })
 
+.controller('viewitem', function($scope){
+  $scope.item = [
+  { title: 'Coffee', price: '25', qty: '1'},
+  { title: 'Milk', price: '100', qty: '5'},
+  { title: 'Shampoo', price: '6', qty: '2'},
+  { title: 'Soap', price: '20', qty: '3'}, ];
+})
 
+.controller('AddItemTransaction', ['$scope', function($scope) {
+        $scope.master = [];
+
+        $scope.addCustomer = function (customer)
+        { 
+              $scope.master.push({
+              id:$scope.master.length,
+              fullname: $scope.fullname,
+              address: $scope.address,
+              contact: $scope.contact,
+              email: $scope.email,
+              birthdate: $scope.birthdate });
+        }
+}])
+
+/////////////////////////////////////////////////////////////////Admin Side
+
+.controller('adminuser', function($scope) {
+  $scope.profiles = [
+    { name: 'Daug, Nikki Monique', username: 'kinkin', email: 'daugnik@gmail.com', contact: '09069748094', address: 'El Salvador City', id: 1 },
+  ];
+})
+
+/////////////////////////////////////////////////////////////////End of Admin Side
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

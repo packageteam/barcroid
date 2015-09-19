@@ -9,9 +9,44 @@
 		<!-- </button> -->
 
 		<!-- <button class="submit_button button button-small button-calm"> -->
-	  		<a href="" class="submit_button button button-small button-calm"><b>Submit</b></a>
+	  		<a href="#/app/submit_transaction" class="submit_button button button-small button-calm"><b>Submit</b></a>
 		<!-- </button> -->		
 
-			<a href="" class="cancel_button button button-small button-assertive"><b>Cancel</b></a>
+			<a href="#/app/transaction" class="cancel_button button button-small button-assertive"><b>Cancel</b></a>
+
+			<br/>
+			<br/>
+
+			<!-- <ion-list>
+		      <ion-item ngrepeat="items in item" >
+		        {{items.title}}, {{items.price}}, {{items.qty}}
+		      </ion-item>
+		    </ion-list> -->
+			<!-- <h2>bhdsgyds</h2> -->     
+
+		<div class="row header">
+          <div class="col">Product Name</div>
+          <div class="col">Price</div>
+          <div class="col">Qty</div>
+          <div class="col">Total</div>
+        </div>
+        <div class="row" ng-repeat="data in item">
+          <div class="col">{{data.title}}</div>
+          <div class="col">{{data.price}}</div>
+          <div class="col">{{data.qty}}</div>
+          <div class="col">{{}}</div>
+          <!-- <div class="col"><button class="button" ng-click="ctrl.add($index)">Add</button></div> -->
+        </div>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <p><b>Money Budgeted:</b> 1,000.00</p>
+        <p><b>Total Amount:</b> 300.00</p>
+
 	</ion-content>
 </ion-view>
+
+

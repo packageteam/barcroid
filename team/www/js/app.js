@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/nikki/create_new_trans.html',
-          controller: 'ProfileCtrl'
+          controller: 'viewitem'
         }
       }
     })
@@ -60,6 +60,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/nikki/search_item.html',
+          controller: 'AddItemTransaction'
+        }
+      }
+    })
+
+  .state('app.submit_transaction', {
+      url: '/submit_transaction',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/nikki/submit_transaction.html',
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
+
+  .state('app.todolist', {
+      url: '/todolist',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/nikki/todolist.html',
           controller: 'ProfileCtrl'
         }
       }
@@ -85,32 +105,116 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
 
-  ///////////////////////////////////////DANICA'S PART////////////////////////////////////////
+  ///////////////////////////////////////ADMIN USER////////////////////////////////////////
+    .state('admin', {
+      url: '/admin',
+      abstract: true,
+      templateUrl: 'templates/admin_side/adminmenu.html',
+      controller: 'AppCtrl'
+    })
+
+    .state('admin.adminprofile', {
+    url: '/adminprofile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/admin_side/adminprofile.html',
+        controller: 'adminuser'
+      }
+    }
+  })
+
+    .state('admin.listofitems', {
+    url: '/listofitems',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/admin_side/listofitems.html',
+        // controller: 'adminuser'
+      }
+    }
+  })
+
+    .state('admin.adminsearch', {
+    url: '/adminsearch',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/admin_side/adminsearch.html',
+        // controller: 'adminuser'
+      }
+    }
+  })
+
+    .state('admin.adminpromos', {
+    url: '/adminpromos',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/admin_side/adminpromos.html',
+        // controller: 'adminuser'
+      }
+    }
+  })
+
+  ///////////////////////////////////////END OF ADMIN USER////////////////////////////////////////
+  ///////////////////////////////////////CASHIER USER////////////////////////////////////////
+    .state('cashier', {
+      url: '/cashier',
+      abstract: true,
+      templateUrl: 'templates/cashier_side/cashier_menu.html',
+      controller: 'AppCtrl'
+    })
+
+    .state('cashier.cashier_profile', {
+    url: '/cashier_profile',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cashier_side/cashier_profile.html',
+        controller: 'adminuser'
+      }
+    }
+  })
+
+    .state('cashier.cashier_search', {
+    url: '/cashier_search',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cashier_side/cashier_search.html',
+        controller: 'adminuser'
+      }
+    }
+  })
+
+    .state('cashier.cashier_transaction', {
+    url: '/cashier_transaction',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/cashier_side/cashier_transaction.html',
+        controller: 'adminuser'
+      }
+    }
+  })
+  ///////////////////////////////////////END OF CASHIER USER////////////////////////////////////////
+  ///////////////////////////////////////NORMAL USER//////////////////////////////////////// 
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+      url: '/app',
+      abstract: true,
+      templateUrl: 'templates/menu.html',
+      controller: 'AppCtrl'
+    })
 
-  .state('app.login', {
-    url: '/login',
-    views: {
-      'menuContent':{
-        templateUrl: 'templates/login.html'
-      }
-    }
-  })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html'
+    })
 
-  .state('app.signup', {
-    url: '/signup',
-    views: {
-      'menuContent':{
-        templateUrl: 'templates/signup.html'
-      }
-    }
-  })
+    .state('firstpage', {
+      url: '/firstpage',
+      templateUrl: 'templates/first.html'
+    })
 
+    .state('signup', {
+      url: '/signup',
+      templateUrl: 'templates/signup.html'
+    })
+  
   .state('app.search', {
     url: '/search',
     views: {
@@ -149,5 +253,5 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   //   }
   // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/login');
+  $urlRouterProvider.otherwise('/firstpage');
 });
