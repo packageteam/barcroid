@@ -6,29 +6,30 @@
 		    <input type="text" placeholder="Search">
 		  </label>
 		</div> -->
-		<h5>Example:</h5>
-		<h2 ng-controller="additem">Add Item</h2>
+		<div ng-controller="AddItemTransaction">
+		<h2>Add Item</h2>
 		<br/>
 			<label class="item item-input">
-				<input type="text" placeholder="Name of Item" data-ng-model="newitem.name">
+				<input type="text" placeholder="Name of Item" ng-model="newitem.name">
 			</label>
 			<br/>
 			<label class="item item-input">
-				<input type="text" placeholder="Price of the Item" data-ng-model="newitem.price">
+				<input type="text" placeholder="Price of the Item" ng-model="newitem.price">
 			</label>
 			<br/>
 			<label class="item item-input">
-				<input type="text" placeholder="Qty of the Item" data-ng-model="newitem.qty">
+				<input type="text" placeholder="Qty of the Item" ng-model="newitem.qty">
 			</label>
 			<br/>
-			<button data-ng-click="additem()" class="button button-assertive">
+			<button ng-click="additem()" class="button button-assertive">
 			  Add Item
 			</button>
 
 			<ion-list>
 		      <ion-item ng-repeat="items in item" >
-		        {{items.title}}, {{items.price}}, {{items.qty}}
+		        {{items.name}}, {{items.price}}, {{items.qty}}
 		      </ion-item>
 		    </ion-list>
+		    </div>
 	</ion-content>
 </ion-view>

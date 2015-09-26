@@ -56,26 +56,42 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('viewitem', function($scope){
-  $scope.item = [
-  { title: 'Coffee', price: '25', qty: '1'},
-  { title: 'Milk', price: '100', qty: '5'},
-  { title: 'Shampoo', price: '6', qty: '2'},
-  { title: 'Soap', price: '20', qty: '3'}, ];
+.controller('viewitem', function($scope, $http){
+  // $scope.item = [
+  // { title: 'Coffee', price: '25', qty: '1'},
+  // { title: 'Milk', price: '100', qty: '5'},
+  // { title: 'Shampoo', price: '6', qty: '2'},
+  // { title: 'Soap', price: '20', qty: '3'}, ];
+  // $http.get('https://localhost/barcroid_backend/transaction').
+  //   success(function(data, status, headers, config) {
+  //   //  $scope.item = data;
+  //   //  console.log($scope.item);
+  //   alert('yes');
+  //   }).
+  //   error(function(data, status, headers, config) {
+  //    alert('no');
+  //   });
+
+  // $http.get("https://localhost/barcroid_backend/transaction")
+  //   .success(function(response) {$scope.item = response.data;});
+
+    $http.get('https://localhost/barcroid_backend/transaction').then(function(response) {
+    console.log('Success', response);
+    console.log($scope.names = response.records);
+  }, function(err) {
+    console.error('ERR', err);
+  })
 })
 
 .controller('AddItemTransaction', ['$scope', function($scope) {
-        $scope.master = [];
+        $scope.item = [{name: 'dd', price: 'd', qty: 'jj'},];
 
-        $scope.addCustomer = function (customer)
+        $scope.additem = function (newitem)
         { 
-              $scope.master.push({
-              id:$scope.master.length,
-              fullname: $scope.fullname,
-              address: $scope.address,
-              contact: $scope.contact,
-              email: $scope.email,
-              birthdate: $scope.birthdate });
+          $scope.item.push({
+            name: $scope.name,
+            price: $scope.price,
+            qty: $scope.qty })
         }
 }])
 
