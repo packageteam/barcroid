@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -75,12 +75,14 @@ angular.module('starter.controllers', [])
   // $http.get("https://localhost/barcroid_backend/transaction")
   //   .success(function(response) {$scope.item = response.data;});
 
-    $http.get('https://localhost/barcroid_backend/transaction').then(function(response) {
-    console.log('Success', response);
-    console.log($scope.names = response.records);
+    $http.get('http://localhost/barcroid_backend/transaction').then(function(response) {
+    console.log(response.$data);
+    // console.log('Success', response);
+    // console.log($scope.names = response.records);
   }, function(err) {
-    console.error('ERR', err);
+    // console.error('ERR', err);
   })
+ 
 })
 
 .controller('AddItemTransaction', ['$scope', function($scope) {
