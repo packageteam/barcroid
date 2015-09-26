@@ -1,5 +1,39 @@
-<ion-view view-title="To do list">
-<ion-content>
-	<h2>To do list</h2>
-</ion-content>
+<ion-view class="" view-title="To Buy list">
+	<ion-content>
+		<div class="row header">
+          	<div class="col">Product Name</div>
+	        <div class="col">Price</div>
+	        <div class="col">Qty</div>
+	        <div class="col">Total</div>
+        </div>
+        <div class="row" ng-repeat="data in item">
+	        <div class="col">{{data.items_id}}</div>
+	        <div class="col">{{data.items_name}}</div>
+	        <div class="col">{{data.items_unit}}</div>
+	        <div class="col">{{}}</div>
+        </div>	
+	</ion-content>
+
+
+<!--<ion-header-bar class="bar-positive">
+      <h1 class="title">Canadian Music</h1>
+    </ion-header-bar>
+	 <ion-content>
+
+      <div class="list">
+
+        <a ng-repeat="item in items" 
+           href="#/{{item.id}}"
+           class="item item-thumbnail-left">
+
+          <img ng-src="{{ item.image }}">
+          <h2>{{ item.album }}</h2>
+          <h4>{{ item.artist }}</h4>
+        </a>
+
+      </div>
+
+    </ion-content>
+-->
 </ion-view>
+

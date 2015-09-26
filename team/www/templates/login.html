@@ -1,36 +1,26 @@
 <ion-view view-title="Login">
-  	<ion-header-bar>
-		<h1 class="title">Login</h1>
-		<!-- <div class="buttons">
-		  <button class="button button-clear" ng-click="closeLogin()">Close</button>
-		</div> -->
+  	<ion-header-bar class="bar-dark">
+		<h1 class="title"><center> &nbsp Login</center></h1>
 	</ion-header-bar>
 	<ion-content>
 		<form ng-submit="doLogin()">
 		  	<div class="list">
 				<label class="item item-input">
-				  	<span class="input-label">Username</span>
+				  	<span class="input-label ion-android-person"> Username</span>
 				  	<input type="text" ng-model="loginData.username">
 				</label>
 				<label class="item item-input">
-				  	<span class="input-label">Password</span>
+				  	<span class="input-label ion-locked"> Password</span>
 				  	<input type="password" ng-model="loginData.password">
 				</label>
-				<!-- <button> <a class="btn btn-primary" href="#/app/playlists">Log in</a></button>	 -->
-
-				<!-- <center><ion-item href="#/app/profile" class="btn button">Login</ion-item></center> -->
-				<!-- <ion-item href="#/app/playlists" class="btn btn-sm btn-primary">Playlists</ion-item> -->
+				
 				<center>
-					<a href="#/app/profile" class="login_button bar bar-header bar-positive"><b>Login</b></a>
+					<a href="#/app/profile" class="login_button bar bar-header bar-calm"><b class="ion-ios-arrow-right"> &nbspLogin</b></a>
 				</center>
 		  	</div>
-		</form>
-		<a class="link" href="#/signup">No Account? Sign Up</a>
-		<br/>
-		<br/><br/>
-		<a class="link" href="#/admin/adminprofile">For Admin Side</a>
-		<br/>
-		<br/><br/>
-		<a class="link" href="#/cashier/cashier_profile">For Cashier Side</a>
+		</form><br/>
+		<a class="link" href="#/signup">No Account? Sign Up</a><br/>
+		<a class="link" href="#/admin/adminprofile">For Admin Side</a><br/>
+		<a class="link" href="#/cashier/cashier_profile">For Cashier Side</a><br/>
 	</ion-content>
 </ion-view>
