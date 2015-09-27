@@ -40,7 +40,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/nikki/edit_new_transaction.html',
-          controller: 'ProfileCtrl'
+          controller: 'edititem'
         }
       }
     })
@@ -80,7 +80,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       views: {
         'menuContent': {
           templateUrl: 'templates/nikki/todolist.html',
-          controller: 'ProfileCtrl'
+          controller: 'todolist'
         }
       }
     })

@@ -12,26 +12,24 @@
 			<br/>
 
 		<div class="row header">
-          <div class="col">Product Name</div>
-          <div class="col">Price</div>
-          <div class="col">Qty</div>
-          <div class="col">Total</div>
-        </div>
-        <div class="row" ng-repeat="data in item">
-          <div class="col">{{data.items_id}}</div>
-          <div class="col">{{data.items_name}}</div>
-          <div class="col">{{data.items_unit}}</div>
-          <div class="col">{{}}</div>
+        <div class="col">Product Name</div>
+        <div class="col">Price</div>
+        <div class="col">Qty</div>
+        <div class="col">Total</div>
+    </div>
+    <div class="row" ng-repeat="data in item">
+        <div class="col">{{data.title}}</div>
+        <div class="col">{{data.price}}</div>
+        <div class="col">{{data.qty}}</div>
+        <div class="col"><b>{{data.total}}</b></div>
+    </div>
 
-        </div>
-
-        <br/>
-        <br/>
         <br/>
         <br/>
 
-        <p><b>Money Budgeted:</b> 1,000.00</p>
-        <p><b>Total Amount:</b> 300.00</p>
+        <p style="font-size: 15px; margin-left: 10px;">Money Budgeted:<b> 1,000.00</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="" ng-click="">Edit</a></p>
+        <p style="font-size: 15px; margin-left: 10px;">Total Amount:<b> 597.00</b></p>
+        <p style="font-size: 15px; margin-left: 10px;">Remaining Amount:<b> 403.00</b></p>
 
 	</ion-content>
 </ion-view>

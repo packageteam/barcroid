@@ -57,36 +57,37 @@ angular.module('starter.controllers', [])
 })
 
 .controller('viewitem', function($scope, $http){
-  // $scope.item = [
-  // { title: 'Coffee', price: '25', qty: '1'},
-  // { title: 'Milk', price: '100', qty: '5'},
-  // { title: 'Shampoo', price: '6', qty: '2'},
-  // { title: 'Soap', price: '20', qty: '3'}, ];
-  // $http.get('https://localhost/barcroid_backend/transaction').
-  //   success(function(data, status, headers, config) {
-  //   //  $scope.item = data;
-  //   //  console.log($scope.item);
-  //   alert('yes');
-  //   }).
-  //   error(function(data, status, headers, config) {
-  //    alert('no');
-  //   });
+  $scope.item = [
+  { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  { title: 'Milk', price: '100', qty: '5', total: '500'},
+  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  { title: 'Soap', price: '20', qty: '3', total: '60'},
+  { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  { title: 'Milk', price: '100', qty: '5', total: '500'},
+  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  { title: 'Soap', price: '20', qty: '3', total: '60'},
+  { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  { title: 'Milk', price: '100', qty: '5', total: '500'},
+  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  { title: 'Soap', price: '20', qty: '3', total: '60'},
+  { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  { title: 'Milk', price: '100', qty: '5', total: '500'},
+  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  { title: 'Soap', price: '20', qty: '3', total: '60'},
+  ];
+    // $scope.item = []; 
 
-  // $http.get("https://localhost/barcroid_backend/transaction")
-  //   .success(function(response) {$scope.item = response.data;});
-
-    $http.get('http://localhost/barcroid_backend/transaction').then(function(response) {
-    console.log(response.$data);
-    // console.log('Success', response);
-    // console.log($scope.names = response.records);
-  }, function(err) {
-    // console.error('ERR', err);
-  })
+// $http.get("barcroid_backend/transaction").success(function (response) 
+//     {
+//       // $scope.item = data;
+//       console.log(response);
+//      }
+//       );
  
 })
 
 .controller('AddItemTransaction', ['$scope', function($scope) {
-        $scope.item = [{name: 'dd', price: 'd', qty: 'jj'},];
+        $scope.item = [{name: 'Example', price: 'example Price', qty: 'Example Qty'},];
 
         $scope.additem = function (newitem)
         { 
@@ -95,7 +96,50 @@ angular.module('starter.controllers', [])
             price: $scope.price,
             qty: $scope.qty })
         }
+
+        $scope.saveedit = function()
+        {
+
+        }
 }])
+
+.controller('edititem', function($scope){
+    $scope.item = [{name: 'Name', price: 'EPrice', qty: 'EQty', total: '323'},
+                  {name: 'Name', price: 'EPrice', qty: 'EQty', total: '121323'},
+    ];
+
+    $scope.edit = function(details, idx){
+      // console.log(idx);
+      // console.log(details);
+      $scope.key = idx;
+      $scope.name = details.name;
+      $scope.price = details.price;
+      $scope.qty = details.qty;
+      $scope.total = details.total;
+    }
+
+      $scope.addedit = function (){
+        $scope.item[$scope.key]={
+          name: $scope.name,
+          price: $scope.price,
+          qty: $scope.qty,
+          total: $scope.total
+        }
+
+        $scope.name = "";
+        $scope.price = "";
+        $scope.qty = "";
+        $scope.total = "";
+      }
+
+      $scope.delete = function (idx){
+        $scope.item.splice(idx, 1);
+      }
+})
+
+.controller('todolist', function($scope){
+  $scope.itemtobuy = [{name: 'Shampoo', qty: '2', price: '10', total: '20'}];
+})
 
 /////////////////////////////////////////////////////////////////Admin Side
 

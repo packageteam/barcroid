@@ -1,0 +1,30 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Edit Item</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+      <!-- <div ng-controller="edititemmodal"> -->
+        <div class="list">
+          <label class="item item-input">
+            <span class="input-label">Product Name</span>
+            <input type="text" ng-model="name">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Product Price</span>
+            <input type="text" ng-model="price">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">Product Qty</span>
+            <input type="text" ng-model="qty">
+          </label>
+          <label class="item">
+            <button class="button button-block button-positive" type="submit" ng-click="">Save Item</button>
+            <button class="button button-block button-assertive" type="submit">Delete Item</button>
+          </label>
+        </div>
+      <!-- </div> -->
+  </ion-content>
+</ion-modal-view>

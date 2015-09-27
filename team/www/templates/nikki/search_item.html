@@ -10,18 +10,18 @@
 		<h2>Add Item</h2>
 		<br/>
 			<label class="item item-input">
-				<input type="text" placeholder="Name of Item" ng-model="newitem.name">
+				<input type="text" placeholder="Name of Item" ng-model="name">
 			</label>
 			<br/>
 			<label class="item item-input">
-				<input type="text" placeholder="Price of the Item" ng-model="newitem.price">
+				<input type="text" placeholder="Price of the Item" ng-model="price">
 			</label>
 			<br/>
 			<label class="item item-input">
-				<input type="text" placeholder="Qty of the Item" ng-model="newitem.qty">
+				<input type="text" placeholder="Qty of the Item" ng-model="qty">
 			</label>
 			<br/>
-			<button ng-click="additem()" class="button button-assertive">
+			<button ng-click="additem(newitem)" class="button button-assertive">
 			  Add Item
 			</button>
 
