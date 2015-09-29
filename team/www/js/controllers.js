@@ -107,5 +107,23 @@ angular.module('starter.controllers', [])
 
 /////////////////////////////////////////////////////////////////End of Admin Side
 
+//////////////////////////////////////////////////////////////// DANICA's Controller
+.controller('signup', function($scope) {
+  $scope.datas = [];
+
+  $scope.adduser = function (newdata)
+  {
+    $scope.datas.push({
+      name: $scope.fname,
+      username: $scope.username,
+      password: $scope.password,
+      contact: $scope.contact,
+      address: $scope.address
+
+    })
+console.log(datas);
+  }
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });

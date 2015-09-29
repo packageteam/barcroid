@@ -212,6 +212,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
     .state('signup', {
       url: '/signup',
+      controller: 'signup',
       templateUrl: 'templates/signup.html'
     })
   
