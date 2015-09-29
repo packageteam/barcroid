@@ -1,36 +1,17 @@
-body{
-	background-color: pink;	
-	font-family: "Century Gothic";
-}
-
-a{
-	text-decoration: none;
-}
-
-
-
-.btn {
-	text-align: center;
-	margin-top: 100px;
-}
-
-.btn :hover{
-	background-color: pink;
-}
-
-/*----------------------------SHAIRA STYLES---------------------------------------*/
-
+<<<<<<< HEAD
 
 .button1 {
+
 	margin-left: 100px;
 	margin-top: 30px;
 	width: 250px;
 }
 .button2 {
+
 	margin-left: 100px;
 	width: 250px;
 	margin-top: 30px;
-}
+=======
 body{
 	background-color: pink;	
 	font-family: "Century Gothic";
@@ -38,21 +19,37 @@ body{
 
 a{
 	text-decoration: none;
+>>>>>>> 63b344f40b8340f2d8559490368ba3d5b1f4b8d7
 }
 .button3 {
+
+<<<<<<< HEAD
 	margin-left: 100px;
 	width: 250px;
 	margin-top: 30px;
+=======
+
+
+.btn {
+	text-align: center;
+	margin-top: 100px;
+>>>>>>> 63b344f40b8340f2d8559490368ba3d5b1f4b8d7
 }
 .button4 {
+
+<<<<<<< HEAD
 	margin-left: 100px;
 	margin-top: 30px;
 	width: 250px;
 }
+
 .con{
 	color:lightgray;
 }
-
+=======
+.btn :hover{
+	background-color: pink;
+}
 
 /*--------------------------- NIKKI STYLES ---------------------------------------*/
 .scan_button{
@@ -180,3 +177,4 @@ a{
 	margin-top: 10px;
 }
 
+>>>>>>> 63b344f40b8340f2d8559490368ba3d5b1f4b8d7
