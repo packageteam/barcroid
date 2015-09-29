@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -57,51 +57,80 @@ angular.module('starter.controllers', [])
 })
 
 .controller('viewitem', function($scope, $http){
-  $scope.item = [
-  { title: 'Coffee', price: '25', qty: '1', total: '25'},
-  { title: 'Milk', price: '100', qty: '5', total: '500'},
-  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
-  { title: 'Soap', price: '20', qty: '3', total: '60'},
-  { title: 'Coffee', price: '25', qty: '1', total: '25'},
-  { title: 'Milk', price: '100', qty: '5', total: '500'},
-  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
-  { title: 'Soap', price: '20', qty: '3', total: '60'},
-  { title: 'Coffee', price: '25', qty: '1', total: '25'},
-  { title: 'Milk', price: '100', qty: '5', total: '500'},
-  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
-  { title: 'Soap', price: '20', qty: '3', total: '60'},
-  { title: 'Coffee', price: '25', qty: '1', total: '25'},
-  { title: 'Milk', price: '100', qty: '5', total: '500'},
-  { title: 'Shampoo', price: '6', qty: '2', total: '12'},
-  { title: 'Soap', price: '20', qty: '3', total: '60'},
-  ];
-    // $scope.item = []; 
-
-// $http.get("barcroid_backend/transaction").success(function (response) 
-//     {
-//       // $scope.item = data;
-//       console.log(response);
-//      }
-//       );
+  // $scope.item = [
+  // { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  // { title: 'Milk', price: '100', qty: '5', total: '500'},
+  // { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  // { title: 'Soap', price: '20', qty: '3', total: '60'},
+  // { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  // { title: 'Milk', price: '100', qty: '5', total: '500'},
+  // { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  // { title: 'Soap', price: '20', qty: '3', total: '60'},
+  // { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  // { title: 'Milk', price: '100', qty: '5', total: '500'},
+  // { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  // { title: 'Soap', price: '20', qty: '3', total: '60'},
+  // { title: 'Coffee', price: '25', qty: '1', total: '25'},
+  // { title: 'Milk', price: '100', qty: '5', total: '500'},
+  // { title: 'Shampoo', price: '6', qty: '2', total: '12'},
+  // { title: 'Soap', price: '20', qty: '3', total: '60'},
+  // ];
+    $scope.item = []; 
+    $scope.selecteddetails = [];
+    $http.get("http://localhost/barcroid_backend/transaction/?id=2").success(function (response) {
+      $scope.item = response;
+     });
+    $http.get("http://localhost/barcroid_backend/transaction/selecteddetails/?id=2").success(function (response){
+      $scope.selecteddetails = response;
+    });
  
 })
 
-.controller('AddItemTransaction', ['$scope', function($scope) {
-        $scope.item = [{name: 'Example', price: 'example Price', qty: 'Example Qty'},];
+.controller('AddItemTransaction', function($scope, $http, $ionicModal, $timeout) {
+        $scope.sendavailableitem = [];
 
-        $scope.additem = function (newitem)
-        { 
-          $scope.item.push({
-            name: $scope.name,
-            price: $scope.price,
-            qty: $scope.qty })
+        $scope.searchitem = function (newitem){
+          $scope.item = newitem;
+          $scope.availableitem = [];
+          $http.get("http://localhost/barcroid_backend/transaction/availableitem/?name=" + $scope.item).success(function (response){
+            $scope.availableitem = response;
+          })
         }
 
-        $scope.saveedit = function()
-        {
+        $scope.addthisqty = function (qty){
+          $scope.qty = qty;
+          if($scope.addthisqty){
+            $scope.sendavailableitem.push({
+              qty: qty});
+              $scope.closeaddqty();  
+              $http.post("http://localhost/barcroid_backend/transaction/inserttransitem/" + $scope.sendavailableitem).success(function (response){
 
+              })
+              // console.log($scope.sendavailableitem);
+          }else{
+            alert('no');
+          }
         }
-}])
+
+      $ionicModal.fromTemplateUrl('templates/nikki/addqty.html', {
+        scope: $scope
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
+
+      $scope.closeaddqty = function() {
+        $scope.modal.hide();
+      };
+
+      $scope.additem = function(idx, name, brand, unit) {
+        $scope.modal.show();
+        $scope.sendavailableitem.push({
+          name: name,
+          brand: brand, 
+          unit: unit
+        })
+      };
+})
 
 .controller('edititem', function($scope){
     $scope.item = [{name: 'Name', price: 'EPrice', qty: 'EQty', total: '323'},

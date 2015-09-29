@@ -1,35 +1,19 @@
 <ion-view view-title="Search Item">
  	<ion-content> 
- 		<!-- <div class="list list-inset">
-		  <label class="item item-input">
-		    <i class="icon ion-search placeholder-icon"></i>
-		    <input type="text" placeholder="Search">
-		  </label>
-		</div> -->
 		<div ng-controller="AddItemTransaction">
-		<h2>Add Item</h2>
-		<br/>
-			<label class="item item-input">
-				<input type="text" placeholder="Name of Item" ng-model="name">
-			</label>
+			<div class="item item-input-inset">
+			    <label class="item-input-wrapper">
+			      <input type="text" placeholder="Search product" ng-model="search">
+			    </label>
+		    	<button class="button button-small" ng-click="searchitem(search)">Submit</button>
+			</div>
 			<br/>
-			<label class="item item-input">
-				<input type="text" placeholder="Price of the Item" ng-model="price">
-			</label>
 			<br/>
-			<label class="item item-input">
-				<input type="text" placeholder="Qty of the Item" ng-model="qty">
-			</label>
-			<br/>
-			<button ng-click="additem(newitem)" class="button button-assertive">
-			  Add Item
-			</button>
-
-			<ion-list>
-		      <ion-item ng-repeat="items in item" >
-		        {{items.name}}, {{items.price}}, {{items.qty}}
-		      </ion-item>
-		    </ion-list>
-		    </div>
+		    <div class="list" ng-repeat="items in availableitem track by $index">
+				<div class="item item-button-right">{{items.items_name}}, {{items.brand_details}}, {{items.items_unit}}, {{items.items_price}}
+			  	<button class="button button-positive" ng-click="additem($index, items.items_name, items.brand_details, items.items_unit)">Add to Cart</button>
+				</div>
+			</div>
+		</div>	
 	</ion-content>
 </ion-view>

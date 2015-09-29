@@ -85,6 +85,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+  // .state('app.addqty', {
+  //   url: '/addqty',
+  //   views: {
+  //       'menuContent': {
+  //           templateUrl: 'templates/nikki/addqty.html',
+  //           controller: 'addqty'
+  //       }
+  //   }
+  // })
+
 
 
 
@@ -106,7 +116,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
 
 
   ///////////////////////////////////////ADMIN USER////////////////////////////////////////
-     .state('admin', {
+    .state('admin', {
       url: '/admin',
       abstract: true,
       templateUrl: 'templates/admin_side/adminmenu.html',
@@ -128,42 +138,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/admin_side/listofitems.html',
-        // controller: 'adminuser'
-      }
-    }
-  })
-     .state('admin.listuser', {
-    url: '/listuser',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/admin_side/listuser.html',
-        // controller: 'adminuser'
-      }
-    }
-  })
-      .state('admin.cprofile', {
-    url: '/cprofile',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/admin_side/cprofile.html',
-        // controller: 'adminuser'
-      }
-    }
-  })
-      .state('admin.additem', {
-    url: '/additem',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/admin_side/additem.html',
-        // controller: 'adminuser'
-      }
-    }
-  })
-     .state('admin.user', {
-    url: '/user',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/admin_side/user.html',
         // controller: 'adminuser'
       }
     }
