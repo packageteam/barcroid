@@ -1,0 +1,21 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Add Qty.</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeaddqty()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+  <br/>
+    <center>
+      <h2>Add Quantity</h2>
+    </center>
+      <label class="item item-input">
+        <input type="text" ng-model="qty">
+      </label>
+      <label class="item">
+        <button class="button button-block button-positive" ng-click="addthisqty(qty)">Add to Cart</button>
+      </label>
+    </div>
+  </ion-content>
+</ion-modal-view>

@@ -30,14 +30,42 @@ class Transaction extends REST_Controller {
 	// 	$id = $this->todo->delete($id);
 	// 	$this->response(array('ok' => 'Success'), 200); 
 	// }
-	// public function index_options(){
-	// 	die();
-	// }
+	public function index_options(){
+		die();
+	}
 
 	public function index_get(){
+		$id = (int) $this->get('id');
 		$this->load->model('Transaction_model','tmodel');
-		$data  = $this->tmodel->getItems();
+		$data  = $this->tmodel->getItems($id);
 		$this->response($data, 200); 
 	}
-	
+
+	public function selecteddetails_get(){
+		$id = (int) $this->get('id');
+		$this->load->model('Transaction_model','tmodel');
+		$data  = $this->tmodel->selecteddetails($id);
+		$this->response($data, 200); 
+	}
+
+	public function availableitem_get(){
+		$name = (string) $this->get('name');
+		$this->load->model('Transaction_model','tmodel');
+		$data  = $this->tmodel->getavailbleitems($name);
+		$this->response($data, 200); 
+	}
+
+	public function inserttransitem_post(){
+		$data = (object) $this->post();
+		var_dump($data);
+		// $this->load->model('Transaction_model', 'tmodel');
+		// $this->tmodel->inserttransitem($data);
+	}
+
+	public function additem_post(){
+		$post_data = $this->post();
+		// var_dump($post_data);
+		$this->load->model('Transaction_model', 'tmodel');
+		$this->tmodel->insertitem($post_data);
+	}
 }

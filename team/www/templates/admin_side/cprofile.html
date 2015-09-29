@@ -1,0 +1,26 @@
+<ion-view view-title="Admin Profile">
+  <ion-content>
+    <ion-list>
+      <div class="list list-inset" ng-repeat="profile in profiles">
+
+    <div class="item">
+      <span class="ion-person"></span>&nbsp&nbsp{{profile.name}}
+    </div>
+
+    <div class="item">
+      <span class="ion-email"></span>&nbsp&nbsp{{profile.email}}
+    </div>
+
+    <div class="item">
+      <span class="ion-android-phone-portrait"></span>&nbsp&nbsp{{profile.contact}}
+    </div>
+
+    <div class="item">
+      <span class="ion-ios-home"></span>&nbsp&nbsp{{profile.address}}
+    </div>
+</div>
+
+    <a href="#" class="edit_profile bar bar-header bar-positive"><b>Edit Profile</b></a>
+    </ion-list>
+  </ion-content>
+</ion-view>

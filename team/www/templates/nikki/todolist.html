@@ -1,39 +1,26 @@
-<ion-view class="" view-title="To Buy list">
-	<ion-content>
-		<div class="row header">
-          	<div class="col">Product Name</div>
-	        <div class="col">Price</div>
-	        <div class="col">Qty</div>
-	        <div class="col">Total</div>
-        </div>
-        <div class="row" ng-repeat="data in item">
-	        <div class="col">{{data.items_id}}</div>
-	        <div class="col">{{data.items_name}}</div>
-	        <div class="col">{{data.items_unit}}</div>
-	        <div class="col">{{}}</div>
-        </div>	
-	</ion-content>
+<ion-view view-title="To do List">
+  <ion-content> 
+       <!--  <a href="#/app/search_scan" class="scan_button button button-small button-positive"><b>Add</b></a>
 
+        <a href="#/app/edit_new_transaction" class="edit_button button button-small button-balanced"><b>Edit</b></a>
 
-<!--<ion-header-bar class="bar-positive">
-      <h1 class="title">Canadian Music</h1>
-    </ion-header-bar>
-	 <ion-content>
+        <a href="#/app/submit_transaction" class="submit_button button button-small button-calm"><b>Submit</b></a>
 
-      <div class="list">
+      <a href="#/app/transaction" class="cancel_button button button-small button-assertive"><b>Cancel</b></a> -->
 
-        <a ng-repeat="item in items" 
-           href="#/{{item.id}}"
-           class="item item-thumbnail-left">
-
-          <img ng-src="{{ item.image }}">
-          <h2>{{ item.album }}</h2>
-          <h4>{{ item.artist }}</h4>
-        </a>
-
-      </div>
-
-    </ion-content>
--->
+    <div class="row header">
+        <div class="col">Product Name</div>
+        <div class="col">Price</div>
+        <div class="col">Qty</div>
+        <div class="col">Total</div>
+    </div>
+    <div class="row" ng-repeat="data in item">
+        <div class="col">{{data.title}}</div>
+        <div class="col">{{data.price}}</div>
+        <div class="col">{{data.qty}}</div>
+        <div class="col"><b>{{data.total}}</b></div>
+    </div>
+  </ion-content>
 </ion-view>
+
 

@@ -1,0 +1,61 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="js/angular/angular.min.js"></script>
+  </head>
+  <body ng-controller="adduserController">
+  	<ion-view view-title="Add Cashier">
+		<ion-content>
+		 	
+			<div class="list">
+				<label class="item item-input" >
+				  	<span class="ion-android-person"></span> &nbsp &nbsp 
+				    <input type="text" placeholder="Full Name" ng-model="fullname">
+				    <h5> {{fullname}}</h5>
+				</label>
+
+				<label class="item item-input">
+				  	<span class="ion-home"></span> &nbsp &nbsp 
+				    <input type="text" placeholder="Address" ng-model="address">
+				    <h5> {{address}}</h5>
+			  	</label>
+
+				<label class="item item-input">
+				  	<span class="ion-at"></span> &nbsp &nbsp 
+				    <input type="text" placeholder="Email Address" ng-model="emailadd">
+				    <h5> {{emailadd}}</h5>
+				</label>
+
+				<label class="item item-input">
+				   	<span class="ion-locked"></span> &nbsp &nbsp 
+				    <input type="password" placeholder="Password" ng-model="password">   
+			  	</label>
+
+				<label class="item item-input">
+				    <span class="con ion-unlocked"></span> &nbsp &nbsp 
+				    <input type="password" placeholder="Confirm Password" ng-model="conpass">
+				</label>
+			    
+			</div>
+
+
+			<a href="#/admin/listuser" class="button1 button button-positive">
+			   Submit
+			</a>
+
+			<!-- <div>
+				<table >
+					<th>Fullname</th>
+					<th>Address</th>
+					<th>Email Address</th>
+					
+				</table>
+
+
+
+			</div> -->
+		</ion-content>
+	</ion-view>
+</body>
+
+</html>
