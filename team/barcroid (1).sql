@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2015 at 06:11 PM
+-- Generation Time: Oct 06, 2015 at 07:32 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `brand` (
 `brand_id` int(10) NOT NULL,
   `brand_details` varchar(50) COLLATE utf8_general_mysql500_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 --
 -- Dumping data for table `brand`
@@ -37,7 +37,12 @@ CREATE TABLE IF NOT EXISTS `brand` (
 
 INSERT INTO `brand` (`brand_id`, `brand_details`) VALUES
 (1, 'Palmolive'),
-(2, 'Silver Swan');
+(2, 'Silver Swan'),
+(3, 'Oishi'),
+(4, 'Dove'),
+(5, 'Whisper'),
+(6, 'Datu Puti'),
+(7, 'Creamsilk');
 
 -- --------------------------------------------------------
 
@@ -49,14 +54,7 @@ CREATE TABLE IF NOT EXISTS `budget` (
 `budget_id` int(30) NOT NULL,
   `budget_amnt` bigint(20) NOT NULL,
   `customer_id` int(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
-
---
--- Dumping data for table `budget`
---
-
-INSERT INTO `budget` (`budget_id`, `budget_amnt`, `customer_id`) VALUES
-(1, 600, 2);
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 -- --------------------------------------------------------
 
@@ -68,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 ,`items_name` varchar(30)
 ,`items_unit` varchar(20)
 ,`items_price` float
-,`items_stock` varchar(30)
+,`items_stock` bigint(30)
 ,`brand_details` varchar(50)
 ,`location_details` varchar(30)
 );
@@ -85,18 +83,32 @@ CREATE TABLE IF NOT EXISTS `items` (
   `items_unit` varchar(20) COLLATE utf8_general_mysql500_ci NOT NULL,
   `items_price` float NOT NULL,
   `items_location` varchar(30) COLLATE utf8_general_mysql500_ci NOT NULL,
-  `items_stock` varchar(30) COLLATE utf8_general_mysql500_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+  `items_stock` bigint(30) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
 --
 -- Dumping data for table `items`
 --
 
 INSERT INTO `items` (`items_id`, `items_name`, `items_brand`, `items_unit`, `items_price`, `items_location`, `items_stock`) VALUES
-(1, 'Shampoo', 1, '5g', 6, '1', '300'),
-(2, 'Soap', 1, '20g', 30, '2', '90'),
-(3, 'Soy Sauce', 2, '1 L', 50, '2', '800');
+(1, 'Shampoo Pink', 1, '5 g', 6, '1', 900),
+(2, 'Shampoo Pink', 1, '1 bottle', 250, '1', 900),
+(3, 'Conditioner Pink', 1, '5 g ', 6, '1', 900),
+(4, 'Conditioner Pink', 1, '1 bottle', 390, '1', 892),
+(5, 'Soy Sauce', 2, '10 g', 20, '1', 900),
+(6, 'Soy Sauce ', 2, '1 L', 300, '1', 900),
+(7, 'Spicy', 3, '1 pack', 30, '1', 900),
+(8, 'Spicy ', 3, 'small', 7.5, '1', 855);
 
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `itemtotal`
+--
+CREATE TABLE IF NOT EXISTS `itemtotal` (
+`total` double
+,`customer_id` int(5)
+);
 -- --------------------------------------------------------
 
 --
@@ -119,15 +131,45 @@ INSERT INTO `location` (`location_id`, `location_details`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `quantity`
+-- Table structure for table `temporary`
 --
 
-CREATE TABLE IF NOT EXISTS `quantity` (
-`qty_id` int(11) NOT NULL,
-  `qty_customer_id` int(11) NOT NULL,
-  `qty_number` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+CREATE TABLE IF NOT EXISTS `temporary` (
+`id` int(10) NOT NULL,
+  `customer_id` int(5) NOT NULL,
+  `item` int(45) NOT NULL,
+  `qty` int(30) NOT NULL,
+  `date` date NOT NULL,
+  `status` int(5) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
+--
+-- Dumping data for table `temporary`
+--
+
+INSERT INTO `temporary` (`id`, `customer_id`, `item`, `qty`, `date`, `status`) VALUES
+(2, 2, 8, 45, '2015-10-06', 1),
+(3, 2, 4, 4, '2015-10-06', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `temporaryview`
+--
+CREATE TABLE IF NOT EXISTS `temporaryview` (
+`id` int(10)
+,`customer_id` int(5)
+,`qty` int(30)
+,`status` int(5)
+,`date` date
+,`items_id` int(50)
+,`items_name` varchar(30)
+,`items_unit` varchar(20)
+,`items_price` float
+,`items_stock` bigint(30)
+,`brand_details` varchar(50)
+,`location_details` varchar(30)
+);
 -- --------------------------------------------------------
 
 --
@@ -139,44 +181,9 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `trans_cashier` int(5) NOT NULL,
   `trans_customer` int(5) NOT NULL,
   `trans_date` date NOT NULL,
-  `trans_total` bigint(30) NOT NULL,
-  `trans_budgetedamnt` float NOT NULL,
-  `trans_item` int(5) NOT NULL,
-  `trans_qty` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+  `trans_total` bigint(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
 
---
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`trans_id`, `trans_cashier`, `trans_customer`, `trans_date`, `trans_total`, `trans_budgetedamnt`, `trans_item`, `trans_qty`) VALUES
-(1, 1, 2, '2015-09-16', 500, 600, 1, 5),
-(2, 1, 2, '2015-09-16', 500, 600, 2, 8),
-(3, 1, 2, '2015-09-16', 500, 600, 2, 10);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `transactionview`
---
-CREATE TABLE IF NOT EXISTS `transactionview` (
-`trans_id` int(100)
-,`trans_date` date
-,`trans_total` bigint(30)
-,`trans_budgetedamnt` float
-,`trans_qty` int(11)
-,`cashier_id` int(100)
-,`cashier_name` text
-,`customer_id` int(100)
-,`customer_name` text
-,`items_id` int(50)
-,`items_name` varchar(30)
-,`items_price` float
-,`items_unit` varchar(20)
-,`location_details` varchar(30)
-,`items_stock` varchar(30)
-,`brand_details` varchar(50)
-);
 -- --------------------------------------------------------
 
 --
@@ -246,11 +253,20 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- --------------------------------------------------------
 
 --
--- Structure for view `transactionview`
+-- Structure for view `itemtotal`
 --
-DROP TABLE IF EXISTS `transactionview`;
+DROP TABLE IF EXISTS `itemtotal`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `transactionview` AS select `t`.`trans_id` AS `trans_id`,`t`.`trans_date` AS `trans_date`,`t`.`trans_total` AS `trans_total`,`t`.`trans_budgetedamnt` AS `trans_budgetedamnt`,`t`.`trans_qty` AS `trans_qty`,`u`.`user_id` AS `cashier_id`,`u`.`user_name` AS `cashier_name`,`v`.`user_id` AS `customer_id`,`v`.`user_name` AS `customer_name`,`i`.`items_id` AS `items_id`,`i`.`items_name` AS `items_name`,`i`.`items_price` AS `items_price`,`i`.`items_unit` AS `items_unit`,`i`.`location_details` AS `location_details`,`i`.`items_stock` AS `items_stock`,`i`.`brand_details` AS `brand_details` from (((`transaction` `t` left join `userview` `u` on((`t`.`trans_cashier` = `u`.`user_id`))) left join `inventory` `i` on((`t`.`trans_item` = `i`.`items_id`))) left join `userview` `v` on((`t`.`trans_customer` = `v`.`user_id`)));
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `itemtotal` AS select (`t`.`qty` * `t`.`items_price`) AS `total`,`t`.`customer_id` AS `customer_id` from (`temporaryview` `t` left join `userview` `u` on((`u`.`user_id` = `t`.`customer_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `temporaryview`
+--
+DROP TABLE IF EXISTS `temporaryview`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `temporaryview` AS select `t`.`id` AS `id`,`t`.`customer_id` AS `customer_id`,`t`.`qty` AS `qty`,`t`.`status` AS `status`,`t`.`date` AS `date`,`i`.`items_id` AS `items_id`,`i`.`items_name` AS `items_name`,`i`.`items_unit` AS `items_unit`,`i`.`items_price` AS `items_price`,`i`.`items_stock` AS `items_stock`,`i`.`brand_details` AS `brand_details`,`i`.`location_details` AS `location_details` from (`temporary` `t` left join `inventory` `i` on((`i`.`items_id` = `t`.`item`)));
 
 -- --------------------------------------------------------
 
@@ -290,10 +306,10 @@ ALTER TABLE `location`
  ADD PRIMARY KEY (`location_id`);
 
 --
--- Indexes for table `quantity`
+-- Indexes for table `temporary`
 --
-ALTER TABLE `quantity`
- ADD PRIMARY KEY (`qty_id`);
+ALTER TABLE `temporary`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `transaction`
@@ -321,32 +337,32 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `brand`
 --
 ALTER TABLE `brand`
-MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `brand_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `budget`
 --
 ALTER TABLE `budget`
-MODIFY `budget_id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `budget_id` int(30) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-MODIFY `items_id` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `items_id` int(50) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
 MODIFY `location_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `quantity`
+-- AUTO_INCREMENT for table `temporary`
 --
-ALTER TABLE `quantity`
-MODIFY `qty_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `temporary`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-MODIFY `trans_id` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `trans_id` int(100) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
