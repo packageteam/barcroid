@@ -1,33 +1,33 @@
 <ion-view view-title="Transaction">
  	<ion-content> 
-	  		<a href="#/app/search_item" class="scan_button button button-small button-positive"><b>Add</b></a>
-
-	  		<a href="#/app/edit_new_transaction" class="edit_button button button-small button-balanced"><b>Edit</b></a>
-
-	  		<a href="#/app/submit_transaction" class="submit_button button button-small button-calm"><b>Submit</b></a>
-
-			<a href="#/app/transaction" class="cancel_button button button-small button-assertive"><b>Cancel</b></a>
-
-			<br/>
-			<br/>
-
-	<div class="row header">
-        <div class="col">Product Name</div>
-        <div class="col">Price</div>
-        <div class="col">Qty</div>
-        <div class="col">Total</div>
+        <div class="row">
+  		<a href="#/app/search_item" class="buttonsn col button button-small button-positive"><b>Add</b></a>
+  		<a href="#/app/edit_new_transaction" class="buttonsn col button button-small button-balanced"><b>Edit</b></a>
+  		<a href="" ng-click="submitotcashier()" class="buttonsn col button button-small button-calm"><b>Submit</b></a>
+		<a href="" ng-click="cancel()" class="buttonsn col button button-small button-assertive"><b>Cancel</b></a>
+        </div>
+        <center><h4 style="color: red;">{{message}}</h4></center>
+    <h4 style="margin-left: 10px;">List of your Items:</h4>
+    <div ng-repeat="data in item">
+        <h5 style="margin-left: 10px;">{{data.brand_details}}, {{data.items_name}} {{data.items_unit}} <br/>
+            {{data.items_price}} X {{data.qty}} <b style="float: right; margin-right: 25px;">{{data.items_price * data.qty | currency: "" : 2}}</b>
+        </h5>
     </div>
-    <div class="row" ng-repeat="data in item">
-        <div class="col">{{data.brand_details}}, {{data.items_name}}</div>
-        <div class="col">{{data.items_price}}</div>
-        <div class="col">{{data.trans_qty}}</div>
-        <div class="col"><b>{{data.items_price * data.trans_qty}}</b></div>
-    </div>
+    <br/>
+    <div>
+        <h2 style="font-size: 15px; margin-left: 130px;">Total Amount:<b ng-repeat="dataselected in totalforid">{{dataselected.total[1]}}</b></h2>
+    </div>  
+
         <br/>
         <br/>
-        <div><p style="font-size: 15px; margin-left: 10px;">Money Budgeted:<b ng-repeat="data in selecteddetails"> {{data.budget_amnt}}</b>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="" ng-click="">Edit</a></p></div>
-        <p style="font-size: 15px; margin-left: 10px;">Total Amount:<b></b></p>
-        <p style="font-size: 15px; margin-left: 10px;">Remaining Amount:<b> 403.00</b></p>
+        <div>
+            <p style="font-size: 15px; margin-left: 10px;">Money Budgeted:<b ng-repeat="sdatas in selecteddetails"> {{sdatas.budget_amnt | currency: "" : 2 }}</b>
+            <br/>
+            <a href="" ng-click="addbudgetedamnt()" style="float: right; margin-right: 10px;">Edit Budgeted Money</a></p>
+        </div>
+        <br/>
+        <p style="font-size: 15px; margin-left: 10px;">Remaining Amount:<b></b></p>
+        <br/><br/>
 	</ion-content>
 </ion-view>
 

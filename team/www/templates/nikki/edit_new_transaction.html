@@ -1,12 +1,26 @@
 <ion-view view-title="Edit Transaction">
  	<ion-content> 
- 		<div ng-controller="edititem">
- 			<h2>Your selected items:</h2>
- 			<input type="text" ng-model="name" placeholder="Name of the product">
- 			<input type="text" ng-model="price" placeholder="Price of the product" disabled>
- 			<input type="text" ng-model="qty" placeholder="Qty of the product">
- 			<input type="text" ng-model="total" placeholder="Total of the product" disabled>
- 			<input type="submit" ng-click="addedit()" value="Save">
+ 	
+ 		<div ng-controller="edititem">	
+ 			<div class="list">			  
+				<div class="card">
+	 				<div class="item item-text-wrap">
+	    				<label>
+				  			<h2>{{items_name}} {{brand_details}} {{unit}}</h2>
+			  			</label>
+						<label>
+					  		<h4>Please Edit the Quantity:</h4>
+						</label>
+						<label class="item item-input">
+					  		<input type="text" ng-model="qty" placeholder="Qty of the product">
+						</label>
+  					</div>
+				</div>
+			</div>
+			<div class="row">
+			<div class="col button button-calm" ng-click="addedit(qty, id)">Save</div>
+			<div class="col button button-assertive" ng-click="cancel()">Cancel</div>
+			</div>
 		    <div class="row header">
 		        <div class="col"><b>Product Name</b></div>
 		        <div class="col"><b>Qty</b></div>
@@ -14,11 +28,10 @@
 		        <div class="col" colspan="2"><b>Action</b></div>
 		    </div>
 		    <div class="row" ng-repeat="items in item track by $index">
-		        <div class="col">{{items.name}}</div>
+		        <div class="col">{{items.items_name}}, {{items.brand_details}}</div>
 		        <div class="col">{{items.qty}}</div>
-		        <div class="col"><b>{{items.total}}</b></div>
-		        <div class="col"><input type="submit" ng-click="edit(items, $index)" value="Edit"></div>
-		        <div class="col"><input type="submit" ng-click="delete($index)" value="Delete"></div>
+		        <div class="col"><b>{{items.qty * items.items_price}}</b></div>
+		        <a href="" ng-click="edit(items, $index)">Edit</a>&nbsp&nbsp<a href="" ng-click="showdeletemodal(items.items_id)">Delete</a>
 		    </div>
 		    </div>
 	</ion-content>

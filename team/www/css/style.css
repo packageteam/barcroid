@@ -55,36 +55,8 @@ a{
 
 
 /*--------------------------- NIKKI STYLES ---------------------------------------*/
-.scan_button{
-	margin-left: 25px;
-	margin-top: 10px;
-	width: 60px;
-	font-size: 15px;
-	padding: 2px;
-}
-
-.edit_button{
-	margin-left: 5px;
-	margin-top: 10px;
-	width: 60px;
-	font-size: 15px;
-	padding: 2px;
-}
-
-.cancel_button{
-	margin-left: 5px;
-	margin-top: 10px;
-	width: 60px;
-	font-size: 15px;
-	padding: 2px;
-}
-
-.submit_button{
-	margin-left: 5px;
-	margin-top: 10px;
-	width: 60px;
-	font-size: 15px;
-	padding: 2px;
+.buttonsn{
+	margin: 5px;
 }
 
 .listofaddeditem{

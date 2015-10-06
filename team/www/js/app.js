@@ -85,16 +85,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
-  // .state('app.addqty', {
-  //   url: '/addqty',
-  //   views: {
-  //       'menuContent': {
-  //           templateUrl: 'templates/nikki/addqty.html',
-  //           controller: 'addqty'
-  //       }
-  //   }
-  // })
-
 
 
 

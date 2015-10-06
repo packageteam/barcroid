@@ -5,13 +5,13 @@
 			    <label class="item-input-wrapper">
 			      <input type="text" placeholder="Search product" ng-model="search">
 			    </label>
-		    	<button class="button button-small" ng-click="searchitem(search)">Submit</button>
+		    	<button class="button button-small button-dark" ng-click="searchitem(search)">Search Item</button>
 			</div>
 			<br/>
 			<br/>
 		    <div class="list" ng-repeat="items in availableitem track by $index">
-				<div class="item item-button-right">{{items.items_name}}, {{items.brand_details}}, {{items.items_unit}}, {{items.items_price}}
-			  	<button class="button button-positive" ng-click="additem($index, items.items_name, items.brand_details, items.items_unit)">Add to Cart</button>
+				<div class="item item-button-right">{{items.brand_details}}, {{items.items_name}} <br/>{{items.items_unit}} -- Php {{items.items_price}}
+			  	<button style="margin-top: 5px;" class="button button-positive" ng-click="additem(items.items_id)">Add</button>
 				</div>
 			</div>
 		</div>	
